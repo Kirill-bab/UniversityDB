@@ -1,0 +1,12 @@
+D:\my projects\UniversityDB\UniversityDB.DAL\obj\Debug\netcoreapp3.1\UniversityDB.DAL.AssemblyInfoInputs.cache
+D:\my projects\UniversityDB\UniversityDB.DAL\obj\Debug\netcoreapp3.1\UniversityDB.DAL.AssemblyInfo.cs
+D:\my projects\UniversityDB\UniversityDB.DAL\obj\Debug\netcoreapp3.1\UniversityDB.DAL.csproj.CoreCompileInputs.cache
+D:\my projects\UniversityDB\UniversityDB.DAL\bin\Debug\netcoreapp3.1\UniversityDB.DAL.deps.json
+D:\my projects\UniversityDB\UniversityDB.DAL\bin\Debug\netcoreapp3.1\UniversityDB.DAL.dll
+D:\my projects\UniversityDB\UniversityDB.DAL\bin\Debug\netcoreapp3.1\UniversityDB.DAL.pdb
+D:\my projects\UniversityDB\UniversityDB.DAL\obj\Debug\netcoreapp3.1\UniversityDB.DAL.dll
+D:\my projects\UniversityDB\UniversityDB.DAL\obj\Debug\netcoreapp3.1\UniversityDB.DAL.pdb
+D:\my projects\UniversityDB\UniversityDB.DAL\bin\Debug\netcoreapp3.1\UniversityDB.DAL.runtimeconfig.json
+D:\my projects\UniversityDB\UniversityDB.DAL\bin\Debug\netcoreapp3.1\UniversityDB.DAL.runtimeconfig.dev.json
+D:\my projects\UniversityDB\UniversityDB.DAL\obj\Debug\netcoreapp3.1\UniversityDB.DAL.genruntimeconfig.cache
+D:\my projects\UniversityDB\UniversityDB.DAL\obj\Debug\netcoreapp3.1\UniversityDB.DAL.csprojAssemblyReference.cache
