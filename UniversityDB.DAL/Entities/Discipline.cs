@@ -8,12 +8,14 @@ namespace UniversityDB.DAL.Entities
     [Table("Disciplines")]
     public class Discipline
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         [Column("Semestres", TypeName = "jsonb")]
         public List<int> Semestres { get; set; }
         [Column("Cafedras", TypeName = "jsonb")]
         public List<int> Cafedras { get; set; }
         public ControlForm ControlForm { get; set; }
+        [Column("TimeInHours", TypeName = "jsonb")]
         public Dictionary<LessonType,int> TimeInHours { get; set; }
     }
 

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace UniversityDB.DAL.Entities.TeachersRanks
 {
-    class Teacher
+    [Table("Teachers")]
+    public class Teacher
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

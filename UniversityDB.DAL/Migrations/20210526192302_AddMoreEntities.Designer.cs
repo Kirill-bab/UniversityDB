@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using UniversityDB.DAL.Contexts;
@@ -11,9 +12,10 @@ using UniversityDB.DAL.Entities;
 namespace UniversityDB.DAL.Migrations
 {
     [DbContext(typeof(DatabaseManagerContext))]
-    partial class DatabaseManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20210526192302_AddMoreEntities")]
+    partial class AddMoreEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
