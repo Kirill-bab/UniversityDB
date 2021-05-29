@@ -45,6 +45,7 @@ D:\my projects\UniversityDB\UniversityDB.Web\obj\Debug\net5.0\UniversityDB.Web.d
 D:\my projects\UniversityDB\UniversityDB.Web\obj\Debug\net5.0\ref\UniversityDB.Web.dll
 D:\my projects\UniversityDB\UniversityDB.Web\obj\Debug\net5.0\UniversityDB.Web.pdb
 D:\my projects\UniversityDB\UniversityDB.Web\obj\Debug\net5.0\UniversityDB.Web.genruntimeconfig.cache
-D:\my projects\UniversityDB\UniversityDB.Web\obj\Debug\net5.0\UniversityDB.Web.MvcApplicationPartsAssemblyInfo.cs
 D:\my projects\UniversityDB\UniversityDB.Web\bin\Debug\net5.0\Humanizer.dll
 D:\my projects\UniversityDB\UniversityDB.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\my projects\UniversityDB\UniversityDB.Web\bin\Debug\net5.0\AutoMapper.dll
+D:\my projects\UniversityDB\UniversityDB.Web\obj\Debug\net5.0\UniversityDB.Web.MvcApplicationPartsAssemblyInfo.cs

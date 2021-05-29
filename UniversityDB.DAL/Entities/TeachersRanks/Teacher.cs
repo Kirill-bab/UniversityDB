@@ -14,7 +14,7 @@ namespace UniversityDB.DAL.Entities.TeachersRanks
         public int Age { get; set; }
         public Sex Sex { get; set; }
         public bool HasChildren { get; set; }
-        public decimal SalarypAmount { get; set; }
+        public decimal SalaryAmount { get; set; }
         public string CandidatoryTheme { get; set; }
         public string Cafedra { get; set; }
         public bool IsStudyingInAspiranture { get; set; }

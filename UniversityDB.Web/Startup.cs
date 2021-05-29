@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UniversityDB.BLL;
+using UniversityDB.Web.Extensions;
 
 namespace UniversityDB.Web
 {
@@ -27,7 +28,7 @@ namespace UniversityDB.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDatabaseServicesInMemory(Configuration);
-
+            services.AddServicesInMemory();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

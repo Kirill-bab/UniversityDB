@@ -13,10 +13,10 @@ namespace UniversityDB.DAL.Entities
         [Column("Semestres", TypeName = "jsonb")]
         public List<int> Semestres { get; set; }
         [Column("Cafedras", TypeName = "jsonb")]
-        public List<int> Cafedras { get; set; }
+        public List<string> Cafedras { get; set; }
         public ControlForm ControlForm { get; set; }
         [Column("TimeInHours", TypeName = "jsonb")]
-        public Dictionary<LessonType,int> TimeInHours { get; set; }
+        public List<TimeInHours> TimeInHours { get; set; }
     }
 
     public enum ControlForm
@@ -32,5 +32,11 @@ namespace UniversityDB.DAL.Entities
         LabWork,
         Coursework,
         Consultation
+    }
+
+    public class TimeInHours
+    {
+        public LessonType LessonType { get; set; }
+        public int Hours { get; set; }
     }
 }

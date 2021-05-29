@@ -21,6 +21,26 @@ namespace UniversityDB.DAL.Migrations
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+            modelBuilder.Entity("UniversityDB.DAL.Entities.Diploma", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int?>("MentorId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Theme")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MentorId");
+
+                    b.ToTable("Diploma");
+                });
+
             modelBuilder.Entity("UniversityDB.DAL.Entities.Discipline", b =>
                 {
                     b.Property<int>("Id")
@@ -28,7 +48,7 @@ namespace UniversityDB.DAL.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<List<int>>("Cafedras")
+                    b.Property<List<string>>("Cafedras")
                         .HasColumnType("jsonb")
                         .HasColumnName("Cafedras");
 
@@ -42,7 +62,7 @@ namespace UniversityDB.DAL.Migrations
                         .HasColumnType("jsonb")
                         .HasColumnName("Semestres");
 
-                    b.Property<Dictionary<LessonType, int>>("TimeInHours")
+                    b.Property<List<TimeInHours>>("TimeInHours")
                         .HasColumnType("jsonb")
                         .HasColumnName("TimeInHours");
 
@@ -72,15 +92,18 @@ namespace UniversityDB.DAL.Migrations
 
             modelBuilder.Entity("UniversityDB.DAL.Entities.Group", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GroupId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("Cafedra")
+                        .HasColumnType("text");
+
                     b.Property<string>("GroupCode")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("GroupId");
 
                     b.ToTable("Groups");
                 });
@@ -92,26 +115,32 @@ namespace UniversityDB.DAL.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("DisciplineId")
+                    b.Property<int?>("DisciplineId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Group")
-                        .HasColumnType("text");
+                    b.Property<int?>("GroupId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("LessonType")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TeacherId")
+                    b.Property<int?>("TeacherId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DisciplineId");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("Schedule");
                 });
 
             modelBuilder.Entity("UniversityDB.DAL.Entities.Student", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StudentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -122,20 +151,27 @@ namespace UniversityDB.DAL.Migrations
                     b.Property<string>("Cafedra")
                         .HasColumnType("text");
 
+                    b.Property<int?>("DiplomaId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("EnrolmentDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
 
-                    b.Property<string>("Group")
-                        .HasColumnType("text");
+                    b.Property<int?>("GroupId")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("HasChildren")
                         .HasColumnType("boolean");
 
                     b.Property<string>("LastName")
                         .HasColumnType("text");
+
+                    b.Property<List<Exam>>("LastSessionResults")
+                        .HasColumnType("jsonb")
+                        .HasColumnName("LastSessionResults");
 
                     b.Property<decimal>("ScholarshipAmount")
                         .HasColumnType("numeric");
@@ -146,7 +182,11 @@ namespace UniversityDB.DAL.Migrations
                     b.Property<int>("Sex")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("StudentId");
+
+                    b.HasIndex("DiplomaId");
+
+                    b.HasIndex("GroupId");
 
                     b.ToTable("Students");
                 });
@@ -179,7 +219,7 @@ namespace UniversityDB.DAL.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("text");
 
-                    b.Property<decimal>("SalarypAmount")
+                    b.Property<decimal>("SalaryAmount")
                         .HasColumnType("numeric");
 
                     b.Property<int>("Sex")
@@ -225,6 +265,51 @@ namespace UniversityDB.DAL.Migrations
                         .HasColumnType("text");
 
                     b.ToTable("Proffesors");
+                });
+
+            modelBuilder.Entity("UniversityDB.DAL.Entities.Diploma", b =>
+                {
+                    b.HasOne("UniversityDB.DAL.Entities.TeachersRanks.Teacher", "Mentor")
+                        .WithMany()
+                        .HasForeignKey("MentorId");
+
+                    b.Navigation("Mentor");
+                });
+
+            modelBuilder.Entity("UniversityDB.DAL.Entities.ScheduleItem", b =>
+                {
+                    b.HasOne("UniversityDB.DAL.Entities.Discipline", "Discipline")
+                        .WithMany()
+                        .HasForeignKey("DisciplineId");
+
+                    b.HasOne("UniversityDB.DAL.Entities.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupId");
+
+                    b.HasOne("UniversityDB.DAL.Entities.TeachersRanks.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherId");
+
+                    b.Navigation("Discipline");
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("UniversityDB.DAL.Entities.Student", b =>
+                {
+                    b.HasOne("UniversityDB.DAL.Entities.Diploma", "Diploma")
+                        .WithMany()
+                        .HasForeignKey("DiplomaId");
+
+                    b.HasOne("UniversityDB.DAL.Entities.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupId");
+
+                    b.Navigation("Diploma");
+
+                    b.Navigation("Group");
                 });
 
             modelBuilder.Entity("UniversityDB.DAL.Entities.TeachersRanks.Assistant", b =>

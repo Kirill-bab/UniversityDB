@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using System;
 using UniversityDB.DAL.Contexts;
+using UniversityDB.DAL.Repositories;
+using UniversityDB.BLL.Services;
 
 namespace UniversityDB.BLL
 {
@@ -15,8 +17,8 @@ namespace UniversityDB.BLL
                 options => options.UseNpgsql(configuration.GetConnectionString("DatabaseManagerContext"),
                 options => options.MigrationsAssembly("UniversityDB.DAL")));
 
-            //services.AddHostedService<MigrationsService>();
-            //services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddHostedService<MigrationsService>();
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             //services.AddTransient<IUserRepository, UserRepository>();
 
             return services;
