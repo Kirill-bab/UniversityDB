@@ -74,5 +74,26 @@ namespace UniversityDB.BLL.Services
                 if (!cafedra.Contains(teacherDTO.Cafedra)) throw new CafedraNotFoundException(teacherDTO.Cafedra);
             }
         }
+
+        //public async Task<IEnumerable<Student>> ParametrisedSearch(
+        //     string Faculty,
+        //     Sex? Sex,
+        //     int? Age,
+        //     bool? Children,
+        //     decimal? Salary,
+        //     bool? isAspirant,
+        //     bool? Candidatory,
+        //     CancellationToken cancellationToken)
+        //{
+        //    var students = await _repository.GetAllAsync(cancellationToken);
+        //    var faculties = await _facultyRepository.GetAllAsync(cancellationToken);
+        //    students = Faculty is null ? students : students.Where(s => faculties.Select(f => f.Name).Contains(Faculty));
+        //    students = Sex is null ? students : students.Where(s => s.Sex == Sex);
+        //    students = Age is null ? students : students.Where(s => s.Age == Age);
+        //    students = Children is null ? students : students.Where(s => s.HasChildren == Children);
+        //    //students = Scholarship is null ? students : students.Where(s => s.ScholarshipAmount == Scholarship);
+
+        //    return students;
+        //}
     }
 }
